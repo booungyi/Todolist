@@ -1,5 +1,7 @@
 package booungyi.todolist.comment;
 
+import booungyi.todolist.todolist.Todolist;
+import booungyi.todolist.todolist.TodolistDTO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,22 +15,22 @@ public class CommentController {
     }
 
     @PostMapping("/comments")
-    public void create(@Valid @RequestBody CommentDTO dto) {
-        service.create(dto);
+    public void create(@Valid @RequestBody CommentDTO dto ,@Valid @RequestParam Todolist id) {
+        service.create(dto, id);
     }
-//
-//    @GetMapping("/comments")
-//    public void get(@RequestParam CommentService commentService) {
-//        commentService.read(new Comment());
-//    }
-//
-//    @DeleteMapping("/comments")
-//    public void delete(@RequestParam CommentService commentService) {
-//        commentService.delete(new Comment());
-//    }
-//
-//    @PutMapping("/comments")
-//    public void edit(@Valid @RequestBody CommentService commentService, @RequestParam Long id) {
-//        commentService.edit(new Comment(), id);
-//    }
+
+    @GetMapping("/comments/{id}")
+    public CommentResponse get(@PathVariable Long id) {
+        return service.read(id);
+    }
+
+    @DeleteMapping("/comments/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
+
+    @PutMapping("/comments/{id}")
+    public void edit(@Valid @RequestBody CommentDTO dto, @PathVariable Long id) {
+        service.edit(dto, id);
+    }
 }
