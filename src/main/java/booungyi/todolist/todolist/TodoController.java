@@ -27,8 +27,8 @@ public class TodoController {
     }
 
     //    @GetMapping("/Todolist/{id}")
-    @GetMapping("Todolist/searchcount")
-    public TodolistResponse counts(@PathVariable Long id) {
-        todoService.responsesearch(id);
-    }
+//    @GetMapping("Todolist/searchcount")
+//    public TodolistResponse counts(@PathVariable Long id) {
+//        todoService.responsesearch(id);
+//    }
 }

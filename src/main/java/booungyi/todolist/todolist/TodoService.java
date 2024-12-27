@@ -35,7 +35,13 @@ public class TodoService {
     // TodolistResponse 에는 (할일 목록이름 , 할일 개수)
     // 그걸 리스트 안에 넣어서 만들건데
     public List<TodolistResponse> responsesearch() {
-        commentRepository.countByTodolist()
-
+        List<Todolist> all = todoRepository.findAll();
+        return all.stream()
+                .map(todolist -> {
+                    int count = commentRepository.countByTodolist_Id(todolist.getId());
+                    return new TodolistResponse(todolist.getName(), count);
+                })
+                .toList();
+        // TodoList 오브젝트 -> [람다 표현식의 함수] -> TodoListResponse 오브젝트
     }
 }

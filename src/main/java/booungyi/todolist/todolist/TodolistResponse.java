@@ -6,4 +6,4 @@ import java.util.List;
 
 public record TodolistResponse(
         String todolistname,
-        Long count) { }
+        int count) { }

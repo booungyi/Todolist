@@ -8,6 +8,5 @@ import java.util.List;
 public interface CommentRepository extends JpaRepository<Comment, Long> {
     List<Comment> findByIsCompleted(boolean iscompleted);
     List<Comment> findByTodolist(Todolist todolist);
-
-    int countByTodolist(Long todolistcount);
+    int countByTodolist_Id(Long todoListId);
 }
