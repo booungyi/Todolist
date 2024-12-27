@@ -9,35 +9,22 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titles; //할 카테고리
     private String contents; //내용
     private String times; //할 시간
-    private String checked;
-
 
     @ManyToOne
-    @JoinColumn(name = "todolist_id")
+    @JoinColumn(nullable = false)
     private Todolist todolist;
+    private boolean isCompleted = false;
 
-    public Comment(Todolist todolist, String titles, String contents, String times, String checked) {
-
-    }
-
-
-    public Comment(String titles, String contents, String times, String checked) {
-        this.titles = titles;
+    public Comment(String contents, String times, Todolist todolist) {
         this.contents = contents;
         this.times = times;
-        this.checked = checked;
+        this.todolist = todolist;
     }
 
-    //    private List<CommentList> commentLists;
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitles() {
-        return titles;
+    public void complet() {
+        isCompleted = true;
     }
 
     public String getContents() {
@@ -48,21 +35,25 @@ public class Comment {
         return times;
     }
 
-    public String getChecked() {
-        return checked;
+    public boolean isCompleted() {
+        return isCompleted;
     }
 
-    public void setTitles(String titles) {
-        this.titles = titles;
+    public void setTodolist(Todolist todolist) {
+        this.todolist = todolist;
+    }
+
+    public Comment() {
+    }
+
+    public Todolist getTodolist() {
+        return todolist;
     }
 
     public void setContents(String contents) {
         this.contents = contents;
     }
 
-    public void setChecked(String checked) {
-        this.checked = checked;
-    }
 
     public void setTimes(String times) {
         this.times = times;

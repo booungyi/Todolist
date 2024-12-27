@@ -4,6 +4,6 @@ import booungyi.todolist.comment.Comment;
 
 import java.util.List;
 
-public record TodolistDTO(String name) {
-
-}
+public record TodolistResponse(
+        String todolistname,
+        Long count) { }

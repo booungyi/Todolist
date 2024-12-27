@@ -11,6 +11,7 @@ public class Todolist {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     @OneToMany(mappedBy = "todolist")
     private List<Comment> comments;
 
@@ -23,10 +24,6 @@ public class Todolist {
 
     public String getName() {
         return name;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
     }
 
     public Todolist(String name) {

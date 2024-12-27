@@ -4,9 +4,9 @@ import booungyi.todolist.todolist.Todolist;
 import booungyi.todolist.todolist.TodolistDTO;
 
 public record CommentDTO(
-        String titles,
+        Long id,
         String contents,
         String times,
-        String checked
+        Long todolist
 ) {
 }
